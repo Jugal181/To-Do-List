@@ -7,14 +7,19 @@ const App = () => {
   const [items, setItems] = useState([]);
 
   const itemsEvents = (e) => {
+    if(e.target.value)
     setInput(e.target.value);
   };
 
   const listOfItems = () => {
-    setItems((oldItems) => {
-      return [...oldItems, input];
-    });
-    setInput("");
+    if(input.length!==0){
+
+      
+      setItems((oldItems) => {
+        return [...oldItems, input];
+      });
+      setInput("");
+    }
   };
 
   const deleteItems = (id) => {
@@ -38,6 +43,7 @@ const App = () => {
             placeholder="Add Items"
             onChange={itemsEvents}
             value={input}
+            
           />
           <button onClick={listOfItems}> + </button>
 
